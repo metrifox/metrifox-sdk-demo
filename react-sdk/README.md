@@ -1,13 +1,63 @@
 # Metrifox SDK Demo
 
-A demo application showcasing the integration of the Metrifox React SDK.
+A production-ready demo application showcasing the integration of the **Metrifox React SDK**. This project demonstrates how to initialize the SDK, manage authentication, and embed widgets like the Customer Portal and Pricing Table.
 
-## Prerequisites
+## Tech Stack
+
+- **React** (v18+)
+- **TypeScript**
+- **Vite**
+- **Metrifox React SDK** (`@metrifox/react-sdk`)
+
+## Project Structure
+
+```bash
+src/
+├── config/
+│   └── metrifox-provider.tsx  # SDK Initialization & Context
+├── modules/
+│   ├── customer-portal/       # Customer Portal Widget integration
+│   └── pricing-table/         # Pricing Table Widget integration
+├── types/                     # Shared types and enums
+└── App.tsx                    # Main application layout
+```
+
+## SDK Integration
+
+### 1. Initialization (`MetrifoxSDKProvider`)
+
+The SDK is initialized centrally in `src/config/metrifox-provider.tsx`. This provider ensures the SDK is ready before any child components attempt to render SDK widgets.
+
+### 2. Usage
+
+Wrap your application with the provider in `main.tsx`:
+
+```tsx
+<MetrifoxSDKProvider>
+  <App />
+</MetrifoxSDKProvider>
+```
+
+## Widgets
+
+This demo includes implementations of the following widgets:
+
+### Customer Portal
+
+Located in `src/modules/customer-portal/`. Renders the self-service portal for customers to manage their subscriptions and billing details.
+
+### Pricing Table
+
+Located in `src/modules/pricing-table/`. Displays product pricing tiers and allows users to subscribe to plans.
+
+## Setup & Installation
+
+### Prerequisites
 
 - Node.js (v18 or higher)
 - npm or yarn
 
-## Installation
+### Installation
 
 1.  Clone the repository:
 
@@ -21,26 +71,7 @@ A demo application showcasing the integration of the Metrifox React SDK.
     npm install
     ```
 
-## Configuration
-
-1.  Create a `.env` file in the root directory (or copy from an example if provided):
-
-    ```bash
-    cp .env.example .env
-    ```
-
-2.  Configure your environment variables in `.env`:
-
-    ```env
-    VITE_METRIFOX_ENV=development
-    VITE_METRIFOX_BASE_URL=http://localhost:8000/api/v1
-    VITE_METRIFOX_APP_SECRET=your_client_key_here
-    VITE_METRIFOX_WEB_APP_URL=http://localhost:3000
-    ```
-
-    > **Note:** For the demo to work, you must provide a valid `VITE_METRIFOX_APP_SECRET` (Client Key).
-
-## Running the App
+### Running the App
 
 Start the development server:
 
@@ -48,12 +79,8 @@ Start the development server:
 npm run dev
 ```
 
-The application will be available at `http://localhost:5173` (or the port shown in your terminal).
+The application will be available at `http://localhost:5173`.
 
-## Available Scripts
+## Troubleshooting
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run format` - Format code with Prettier
+- **Widgets not loading**: Check the browser console for authentication errors. Ensure the hardcoded Client Key in `src/config/metrifox-provider.tsx` is valid.
