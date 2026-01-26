@@ -7,12 +7,18 @@ import type { ConfigValue } from "../../types/widget"
 type PricingTableWidgetProps = {
   checkoutKey?: string
   productKey?: string
+  plansOnly?: boolean
+  singlePurchasesOnly?: boolean
+  showTabHeader?: boolean
   [key: string]: ConfigValue | undefined
 }
 
 export const PricingTableWidget = ({
   checkoutKey,
   productKey,
+  plansOnly,
+  singlePurchasesOnly,
+  showTabHeader,
   ...rest
 }: PricingTableWidgetProps) => {
   // Re-initialize Metrifox when theme props or client key changes
@@ -31,6 +37,7 @@ export const PricingTableWidget = ({
     // We use a default client key for demo purposes
     metrifoxInit({
       clientKey: "tPVJP9Sw87rO4OWMpDtXDRzjDH1iw4bh_uShZqh1xUU",
+      baseUrl: "http://localhost:8000/api/v1",
       pricingTableTheme: Object.keys(themeObj).length > 0 ? themeObj : undefined,
     })
   }, [rest])
@@ -51,7 +58,13 @@ export const PricingTableWidget = ({
 
   return (
     <div style={{ width: "100%", height: "100%" }}>
-      <PricingTable checkoutUsername={checkoutKey} productKey={productKey} />
+      <PricingTable
+        checkoutUsername={checkoutKey}
+        productKey={productKey}
+        plansOnly={plansOnly}
+        singlePurchasesOnly={singlePurchasesOnly}
+        showTabHeader={showTabHeader}
+      />
     </div>
   )
 }
