@@ -1,4 +1,16 @@
-import type { ComponentType } from "react"
+import type { ComponentType, ReactNode } from "react"
+
+export type ConfigValue = string | number | boolean
+
+export type WidgetConfigParam = {
+  key: string
+  label: string
+  type: "text" | "color" | "boolean" | "select"
+  defaultValue?: ConfigValue
+  placeholder?: string
+  options?: { label: string; value: ConfigValue }[]
+  section?: string
+}
 
 export type WidgetDefinition = {
   id: string
@@ -7,5 +19,7 @@ export type WidgetDefinition = {
   status: "Live" | "Beta" | "Roadmap"
   docsUrl: string
   highlights: string[]
-  component: ComponentType
+  component: ComponentType<Record<string, ConfigValue>>
+  configs?: WidgetConfigParam[]
+  icon?: ReactNode
 }

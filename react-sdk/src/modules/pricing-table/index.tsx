@@ -1,8 +1,70 @@
+import { PricingTable, metrifoxInit } from "@metrifox/react-sdk"
+import { useEffect } from "react"
+import { EmptyState } from "../../components/playground/empty-state"
+import { setNested } from "../../utils/object"
+import type { ConfigValue } from "../../types/widget"
 
-export const PricingTableWidget = () => {
+type PricingTableWidgetProps = {
+  checkoutKey?: string
+  productKey?: string
+  plansOnly?: boolean
+  singlePurchasesOnly?: boolean
+  showTabHeader?: boolean
+  [key: string]: ConfigValue | undefined
+}
+
+export const PricingTableWidget = ({
+  checkoutKey,
+  productKey,
+  plansOnly,
+  singlePurchasesOnly,
+  showTabHeader,
+  ...rest
+}: PricingTableWidgetProps) => {
+  // Re-initialize Metrifox when theme props or client key changes
+  useEffect(() => {
+    const themeObj: Record<string, unknown> = {}
+
+    // Process theme props
+    Object.keys(rest).forEach((key) => {
+      if (key.startsWith("theme.")) {
+        const path = key.replace("theme.", "")
+        setNested(themeObj, path, rest[key])
+      }
+    })
+
+    // Initialize SDK with theme
+    // We use a default client key for demo purposes
+    metrifoxInit({
+      clientKey: "tPVJP9Sw87rO4OWMpDtXDRzjDH1iw4bh_uShZqh1xUU",
+      baseUrl: "http://localhost:8000/api/v1",
+      pricingTableTheme: Object.keys(themeObj).length > 0 ? themeObj : undefined,
+    })
+  }, [rest])
+
+  if (!checkoutKey || !productKey) {
+    return (
+      <EmptyState
+        title="Configuration Required"
+        description={
+          <>
+            Please enter your <strong>Checkout Username</strong> and{" "}
+            <strong>Product Key</strong> to view the pricing table.
+          </>
+        }
+      />
+    )
+  }
+
   return (
-    <div className="widget-surface pricing-table">
-      PricingTableWidget
+    <div style={{ width: "100%", height: "100%" }}>
+      <PricingTable
+        checkoutUsername={checkoutKey}
+        productKey={productKey}
+        plansOnly={plansOnly}
+        singlePurchasesOnly={singlePurchasesOnly}
+        showTabHeader={showTabHeader}
+      />
     </div>
   )
 }
