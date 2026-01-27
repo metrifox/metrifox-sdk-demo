@@ -23,7 +23,7 @@ export const PricingTableWidget = ({
   clientKey,
   ...rest
 }: PricingTableWidgetProps) => {
-  // Initialize SDK with themeAnd client key
+  // Initialize SDK with theme and client key
   useEffect(() => {
     const themeObj = extractThemeConfig(rest, "pricingTable")
 
