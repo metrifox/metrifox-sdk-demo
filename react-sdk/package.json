@@ -13,7 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@metrifox/react-sdk": "^0.0.16",
+    "@metrifox/react-sdk": "^0.0.17",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
