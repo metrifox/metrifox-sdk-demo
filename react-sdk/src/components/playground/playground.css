@@ -79,12 +79,13 @@ body {
   position: relative;
 }
 
-.pg-brand-icon {
+.pg-brand-image {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--pg-accent);
-  min-width: 24px;
+}
+.pg-brand-image img {
+  display: block;
 }
 .pg-brand-text {
   font-weight: 700;
@@ -230,6 +231,52 @@ body {
 .pg-sidebar.collapsed .pg-sidebar-footer {
   padding: 1.5rem 0.5rem;
   align-items: center;
+}
+
+/* Header Actions */
+.pg-header-divider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--pg-border);
+  margin: 0 0.5rem;
+}
+
+.pg-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pg-text-muted);
+  transition: color 0.2s;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+.pg-icon-link:hover {
+  color: var(--pg-text);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+[data-theme="dark"] .pg-icon-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.pg-theme-toggle-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--pg-border);
+  border-radius: 6px;
+  color: var(--pg-text);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+.pg-theme-toggle-header:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+[data-theme="dark"] .pg-theme-toggle-header:hover {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .pg-theme-toggle-btn {
@@ -568,6 +615,10 @@ body {
 
 /* Tablet / Mobile Responsiveness */
 @media (max-width: 1024px) {
+  body {
+    overflow: auto;
+  }
+
   .pg-layout {
     flex-direction: column;
     height: auto;
@@ -575,54 +626,118 @@ body {
     overflow-y: auto;
   }
 
+  /* Sidebar behavior on mobile/tablet */
   .pg-sidebar {
-    width: 100%;
-    height: auto;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    height: 100%;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    box-shadow: 4px 0 24px -12px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    align-items: stretch;
     padding-bottom: 0;
+  }
+
+  .pg-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  /* Overlay */
+  .pg-sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .pg-sidebar-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Hide desktop toggle on mobile */
+  .pg-sidebar-toggle {
+    display: none;
+  }
+
+  /* Mobile Close Button */
+  .pg-sidebar-mobile-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    color: var(--pg-text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10;
   }
 
   .pg-logo {
     width: auto;
-    border-right: 1px solid var(--pg-border);
+    border-right: none;
+    border-bottom: 1px solid var(--pg-border);
+    justify-content: flex-start;
   }
 
   .pg-nav {
     flex: 1;
-    padding: 0.5rem 1rem;
-    overflow-x: auto;
+    padding: 1.5rem;
+    overflow-y: auto;
   }
 
   .pg-nav ul {
-    display: flex;
-    gap: 0.5rem;
+    display: block;
+    gap: 0;
   }
 
   .pg-nav-item {
-    white-space: nowrap;
-    margin-bottom: 0;
-    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.25rem;
+    padding: 0.75rem 1rem;
+    white-space: normal;
   }
 
   .pg-sidebar-footer {
     width: auto;
-    padding: 0.5rem;
+    padding: 1.5rem;
     display: flex;
-    align-items: center;
-  }
-
-  .pg-theme-toggle-btn {
-    width: auto;
-    padding: 0.5rem;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .pg-main {
     width: 100%;
     flex: none;
-    min-height: 50vh;
+    min-height: 100vh;
+  }
+
+  /* Header adjustments */
+  .pg-header {
+    padding: 0 1rem;
+  }
+
+  /* Mobile Menu Button */
+  .pg-mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--pg-text);
+    padding: 0.5rem;
+    cursor: pointer;
+    margin-right: 0.5rem;
   }
 
   .pg-config-sidebar {
@@ -630,7 +745,6 @@ body {
     height: auto;
     border-top: 1px solid var(--pg-border);
     box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
-    max-height: 400px;
   }
 
   .pg-config-panel {
@@ -650,18 +764,40 @@ body {
 }
 
 @media (max-width: 640px) {
-  .pg-sidebar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .pg-logo {
-    border-right: none;
-    border-bottom: 1px solid var(--pg-border);
-  }
-  .pg-nav ul {
-    flex-direction: column;
-  }
   .pg-config-content {
     grid-template-columns: 1fr;
+  }
+
+  .pg-header h2 {
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+  }
+}
+
+/* Default state for mobile components */
+.pg-sidebar-overlay,
+.pg-sidebar-mobile-close,
+.pg-mobile-menu-btn {
+  display: none;
+}
+
+/* Ensure these are visible when inside media query */
+@media (max-width: 1024px) {
+  .pg-sidebar-overlay,
+  .pg-sidebar-mobile-close,
+  .pg-mobile-menu-btn {
+    display: block;
+  }
+  /* But overlay is hidden by opacity by default */
+  .pg-sidebar-overlay:not(.open) {
+    pointer-events: none;
+  }
+
+  /* Close button only shows inside drawer */
+  .pg-sidebar-mobile-close {
+    display: block;
   }
 }

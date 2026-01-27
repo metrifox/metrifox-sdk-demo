@@ -49,7 +49,7 @@ export const widgetCatalog: WidgetDefinition[] = [
         key: "customerKey",
         label: "Customer Key",
         type: "text",
-        defaultValue: "cust-mkpo321o3b7q",
+        defaultValue: "cust-mkpo1rd3u91j",
         placeholder: "Enter your customer key",
         section: "api",
       },
@@ -102,7 +102,7 @@ export const widgetCatalog: WidgetDefinition[] = [
         key: "theme.customerPortal.section.background",
         label: "Section Background",
         type: "color",
-        defaultValue: "#ffffff",
+        defaultValue: "#f1eaea",
         section: "Theme: Section",
       },
       {
