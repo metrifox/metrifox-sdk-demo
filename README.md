@@ -23,7 +23,20 @@ npm run dev
 
 For more details, please refer to the [React SDK README](./react-sdk/README.md).
 
-**Example Screenshots**
+## Customer Portal
 
-<img width="100%" alt="Customer Portal Preview" src="./assets/playground-preview.png" />
-<img width="100%" alt="Pricing Table Preview" src="./assets/pricing-table-preview.png" />
+Metrifox's pre-built customer portal allows your users to self-serve their billing needs.
+
+|                                        Light Mode                                        |                                       Dark Mode                                        |
+| :--------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------: |
+| <img src="./assets/customer-portal-light.png" width="400" alt="Customer Portal Light" /> | <img src="./assets/customer-portal-dark.png" width="400" alt="Customer Portal Dark" /> |
+
+<br />
+
+## Pricing Table
+
+A conversion-optimized pricing table widget that connects directly to your product catalog.
+
+|                                      Light Mode                                      |                                     Dark Mode                                      |
+| :----------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: |
+| <img src="./assets/pricing-table-light.png" width="400" alt="Pricing Table Light" /> | <img src="./assets/pricing-table-dark.png" width="400" alt="Pricing Table Dark" /> |
