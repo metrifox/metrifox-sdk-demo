@@ -1,42 +1,90 @@
-# Metrifox SDK Demos
+# Metrifox SDK Demo (React)
 
-This repository contains example applications demonstrating how to integrate the **Metrifox SDK** into various frameworks.
+A production-ready demo application showcasing the integration of the **Metrifox React SDK**. This project demonstrates how to initialize the SDK, manage authentication, and embed widgets like the Customer Portal and Pricing Table.
 
-## Available Demos
+## Tech Stack
 
-### [React SDK](./react-sdk)
+- **React** (v19+)
+- **TypeScript**
+- **Vite**
+- **Metrifox React SDK** (`@metrifox/react-sdk`)
 
-A complete example using React, TypeScript, and Vite.
-
-- **Location:** `./react-sdk`
-- **Features:** Customer Portal, Pricing Table, Authentication Provider.
-
-## Getting Started
-
-To run the React demo:
+## Project Structure
 
 ```bash
-cd react-sdk
-npm install
+src/
+├── config/
+│   └── metrifox-provider.tsx  # SDK Initialization & Context
+├── modules/
+│   ├── customer-portal/       # Customer Portal Widget integration
+│   └── pricing-table/         # Pricing Table Widget integration
+├── types/                     # Shared types and enums
+└── App.tsx                    # Main application layout
+```
+
+## Setup & Installation
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Installation
+
+1.  Navigate to the project directory (if not already there):
+
+    ```bash
+    cd react-sdk
+    ```
+
+2.  Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+### Running the App
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-For more details, please refer to the [React SDK README](./react-sdk/README.md).
+The application will be available at `http://localhost:5173`.
 
-## Customer Portal
+## SDK Integration
 
-Metrifox's pre-built customer portal allows your users to self-serve their billing needs.
+### 1. Initialization (`MetrifoxSDKProvider`)
 
-|                                        Light Mode                                        |                                       Dark Mode                                        |
-| :--------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------: |
-| <img src="./assets/customer-portal-light.png" width="400" alt="Customer Portal Light" /> | <img src="./assets/customer-portal-dark.png" width="400" alt="Customer Portal Dark" /> |
+The SDK is initialized centrally in `src/config/metrifox-provider.tsx`. This provider ensures the SDK is ready before any child components attempt to render SDK widgets.
 
-<br />
+### 2. Usage
 
-## Pricing Table
+Wrap your application with the provider in `main.tsx`:
 
-A conversion-optimized pricing table widget that connects directly to your product catalog.
+```tsx
+<MetrifoxSDKProvider>
+  <App />
+</MetrifoxSDKProvider>
+```
 
-|                                      Light Mode                                      |                                     Dark Mode                                      |
-| :----------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: |
-| <img src="./assets/pricing-table-light.png" width="400" alt="Pricing Table Light" /> | <img src="./assets/pricing-table-dark.png" width="400" alt="Pricing Table Dark" /> |
+## Widgets
+
+This demo includes implementations of the following widgets:
+
+### [Customer Portal](https://docs.metrifox.com/sdks/frontend/react#core-widget:-customerportal)
+
+Located in `src/modules/customer-portal/`. Renders the self-service portal for customers to manage their subscriptions and billing details.
+
+![Customer Portal Light](./assets/customer-portal-light.png)
+
+### [Pricing Table](https://docs.metrifox.com/sdks/frontend/react#pricing-table)
+
+Located in `src/modules/pricing-table/`. Displays product pricing tiers and allows users to subscribe to plans.
+
+![Pricing Table Light](./assets/pricing-table-light.png)
+
+## Troubleshooting
+
+- **Widgets not loading**: Check the browser console for authentication errors. Ensure the hardcoded Client Key in `src/config/metrifox-provider.tsx` is valid.
