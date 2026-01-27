@@ -2,31 +2,40 @@ import { CustomerPortal, metrifoxInit } from "@metrifox/react-sdk"
 import "@metrifox/react-sdk/dist/styles.css"
 import { useEffect } from "react"
 import { EmptyState } from "../../components/playground/empty-state"
+import { extractThemeConfig } from "../../utils/object"
+import type { ConfigValue } from "../../types/widget"
+
+type CustomerPortalWidgetProps = {
+  customerKey?: string
+  clientKey?: string
+  [key: string]: ConfigValue | undefined
+}
 
 export const CustomerPortalWidget = ({
   customerKey,
   clientKey,
-}: {
-  customerKey?: string
-  clientKey?: string
-}) => {
-  // Initialize SDK when clientKey changes
+  ...rest
+}: CustomerPortalWidgetProps) => {
+  // Initialize SDK when clientKey or theme changes
   useEffect(() => {
     if (clientKey) {
+      const themeObj = extractThemeConfig(rest, "customerPortal")
+
       metrifoxInit({
         clientKey,
+        theme: Object.keys(themeObj).length > 0 ? themeObj : undefined,
       })
     }
-  }, [clientKey])
+  }, [clientKey, rest])
 
-  if (!customerKey || !clientKey) {
+  if (!clientKey || !customerKey) {
     return (
       <EmptyState
         title="Configuration Required"
         description={
           <>
-            Please enter your <strong>Customer Key</strong> and{" "}
-            <strong>Client Key</strong> in the configuration panel to render the portal.
+            Please enter your <strong>Client Key</strong> and{" "}
+            <strong>Customer Key</strong> in the configuration panel to render the portal.
           </>
         }
       />

@@ -1,10 +1,11 @@
 import { PricingTable, metrifoxInit } from "@metrifox/react-sdk"
 import { useEffect } from "react"
 import { EmptyState } from "../../components/playground/empty-state"
-import { setNested } from "../../utils/object"
+import { extractThemeConfig } from "../../utils/object"
 import type { ConfigValue } from "../../types/widget"
 
 type PricingTableWidgetProps = {
+  clientKey?: string
   checkoutKey?: string
   productKey?: string
   plansOnly?: boolean
@@ -19,30 +20,22 @@ export const PricingTableWidget = ({
   plansOnly,
   singlePurchasesOnly,
   showTabHeader,
+  clientKey,
   ...rest
 }: PricingTableWidgetProps) => {
-  // Re-initialize Metrifox when theme props or client key changes
+  // Initialize SDK with themeAnd client key
   useEffect(() => {
-    const themeObj: Record<string, unknown> = {}
+    const themeObj = extractThemeConfig(rest, "pricingTable")
 
-    // Process theme props
-    Object.keys(rest).forEach((key) => {
-      if (key.startsWith("theme.")) {
-        const path = key.replace("theme.", "")
-        setNested(themeObj, path, rest[key])
-      }
-    })
+    if (clientKey) {
+      metrifoxInit({
+        clientKey,
+        theme: Object.keys(themeObj).length > 0 ? themeObj : undefined,
+      })
+    }
+  }, [clientKey, rest])
 
-    // Initialize SDK with theme
-    // We use a default client key for demo purposes
-    metrifoxInit({
-      clientKey: "tPVJP9Sw87rO4OWMpDtXDRzjDH1iw4bh_uShZqh1xUU",
-      baseUrl: "http://localhost:8000/api/v1",
-      pricingTableTheme: Object.keys(themeObj).length > 0 ? themeObj : undefined,
-    })
-  }, [rest])
-
-  if (!checkoutKey || !productKey) {
+  if (!clientKey || !checkoutKey || !productKey) {
     return (
       <EmptyState
         title="Configuration Required"
