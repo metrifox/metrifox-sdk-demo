@@ -325,7 +325,7 @@ export const widgetCatalog: WidgetDefinition[] = [
         key: "checkoutKey",
         label: "Checkout Username",
         type: "text",
-        defaultValue: "checkout_demo_user",
+        defaultValue: "sandbox-adedapo-s-inc",
         section: "api",
       },
 
@@ -333,7 +333,7 @@ export const widgetCatalog: WidgetDefinition[] = [
         key: "productKey",
         label: "Product Key",
         type: "text",
-        defaultValue: "prod_demo_123",
+        defaultValue: "product_metrifox_billing_product_fc6c",
         section: "api",
       },
       {
