@@ -120,8 +120,10 @@ export const PlaygroundLayout = ({ widgets }: LayoutProps) => {
               target="_blank"
               rel="noopener noreferrer"
               className="pg-icon-link"
+              style={{ gap: "8px", paddingLeft: "12px", paddingRight: "12px" }}
               title="View on GitHub"
             >
+              <span style={{ fontSize: "0.875rem", fontWeight: 500 }}>View Source</span>
               <svg
                 height="20"
                 width="20"

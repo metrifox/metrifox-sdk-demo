@@ -9,11 +9,18 @@ This repository contains example applications demonstrating how to integrate the
 A complete example using React, TypeScript, and Vite.
 
 - **Location:** `./react-sdk`
-- **Features:** Customer Portal, Pricing Table, Authentication Provider.
+- **Features:** Customer Portal, Pricing Table, Configuration panel with API keys and Theme options.
+
+### [Angular SDK](./angular-sdk)
+
+A complete example using Angular 19, TypeScript, and the Angular CLI.
+
+- **Location:** `./angular-sdk`
+- **Features:** Customer Portal, Pricing Table, Configuration panel with API keys and Theme options (same playground experience as the React demo).
 
 ## Getting Started
 
-To run the React demo:
+### React demo
 
 ```bash
 cd react-sdk
@@ -21,7 +28,31 @@ npm install
 npm run dev
 ```
 
-For more details, please refer to the [React SDK README](./react-sdk/README.md).
+The app will be available at `http://localhost:5173`.
+
+### Angular demo (playground with local SDK)
+
+The Angular demo uses the Angular SDK from a local build so you can test the package like the React SDK. From the **metrifox-sdk-demo** repo:
+
+1. **Build the Angular SDK** (in the [metrifox-angular-sdk](https://github.com/metrifox/metrifox-angular-sdk) repo):
+
+   ```bash
+   cd path/to/metrifox-angular-sdk
+   pnpm install
+   pnpm run build
+   ```
+
+2. **Run the Angular demo** (back in this repo):
+
+   ```bash
+   cd angular-sdk
+   npm install
+   npm run dev
+   ```
+
+   The app will be available at `http://localhost:4200`.
+
+For more details, see the [React SDK README](./react-sdk/README.md) and [Angular SDK README](./angular-sdk/README.md).
 
 ## Customer Portal
 
