@@ -30,27 +30,15 @@ npm run dev
 
 The app will be available at `http://localhost:5173`.
 
-### Angular demo (playground with local SDK)
+### Angular demo
 
-The Angular demo uses the Angular SDK from a local build so you can test the package like the React SDK. From the **metrifox-sdk-demo** repo:
+```bash
+cd angular-sdk
+npm install
+npm start
+```
 
-1. **Build the Angular SDK** (in the [metrifox-angular-sdk](https://github.com/metrifox/metrifox-angular-sdk) repo):
-
-   ```bash
-   cd path/to/metrifox-angular-sdk
-   pnpm install
-   pnpm run build
-   ```
-
-2. **Run the Angular demo** (back in this repo):
-
-   ```bash
-   cd angular-sdk
-   npm install
-   npm run dev
-   ```
-
-   The app will be available at `http://localhost:4200`.
+The app will be available at `http://localhost:4200`.
 
 For more details, see the [React SDK README](./react-sdk/README.md) and [Angular SDK README](./angular-sdk/README.md).
 
