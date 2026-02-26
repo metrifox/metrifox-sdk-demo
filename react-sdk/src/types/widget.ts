@@ -23,7 +23,7 @@ export type WidgetDefinition = {
   configs?: WidgetConfigParam[]
   /** Default nested theme for this widget. Each widget has its own theme state; this is the initial value. */
   defaultTheme?: Record<string, unknown>
-  /** Theme scope key for the SDK (e.g. "customerPortal", "pricingTable"). Used when building combinedValues and code snippet. */
+  /** Theme scope key for the SDK (e.g. "customerPortal", "pricingCards"). Used when building combinedValues and code snippet. */
   themeScope?: string
   /** Optional short description per theme section (nested keys, e.g. "card", "button"). */
   sectionDescriptions?: Record<string, string>
