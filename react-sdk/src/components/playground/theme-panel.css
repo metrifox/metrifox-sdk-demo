@@ -5,7 +5,7 @@
 }
 
 .tp-root-section {
-  border-bottom: 1px solid #1e293b;
+  border-bottom: 1px solid #3f3f46;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
 }
@@ -38,13 +38,13 @@
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: #94a3b8;
+  color: #a1a1aa;
   letter-spacing: 0.05em;
   margin: 0;
 }
 
 .tp-root-header:hover .tp-root-title {
-  color: #fff;
+  color: #fafafa;
 }
 
 .tp-section-header {
@@ -56,24 +56,24 @@
   border: none;
   padding: 0.25rem 0;
   cursor: pointer;
-  color: #94a3b8;
+  color: #a1a1aa;
   margin-bottom: 0.5rem;
   text-align: left;
 }
 
 .tp-section-header:hover .tp-section-title {
-  color: #fff;
+  color: #fafafa;
 }
 
 .tp-section-title {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #cbd5e1;
+  color: #d4d4d8;
 }
 
 .tp-chevron {
   font-size: 14px;
-  color: #64748b;
+  color: #71717a;
   transition: transform 0.2s;
   display: inline-block;
   line-height: 1;
@@ -92,18 +92,18 @@
   display: block;
   font-size: 0.75rem;
   font-weight: 500;
-  color: #cbd5e1;
+  color: #d4d4d8;
   margin-bottom: 0.375rem;
 }
 
 /* Inputs */
 .tp-text-input {
   width: 100%;
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: #3f3f46;
+  border: 1px solid #52525b;
   border-radius: 6px;
   padding: 6px 10px;
-  color: #fff;
+  color: #fafafa;
   font-size: 13px;
   outline: none;
   transition: border-color 0.2s;
@@ -126,8 +126,8 @@
   height: 32px;
   border-radius: 6px;
   overflow: hidden;
-  border: 1px solid #334155;
-  background: #1e293b;
+  border: 1px solid #52525b;
+  background: #3f3f46;
   flex-shrink: 0;
 }
 
@@ -163,7 +163,7 @@
 .tp-range {
   flex: 1;
   height: 4px;
-  background: #334155;
+  background: #52525b;
   border-radius: 2px;
   appearance: none;
   outline: none;
@@ -177,7 +177,7 @@
   background: #3b82f6;
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid #1e293b;
+  border: 2px solid #27272a;
   box-shadow: 0 0 0 1px #3b82f6;
 }
 
@@ -194,7 +194,7 @@
 
 .tp-section-content {
   padding-left: 0.5rem;
-  border-left: 1px solid #1e293b;
+  border-left: 1px solid #3f3f46;
   margin-left: 0.25rem;
 }
 

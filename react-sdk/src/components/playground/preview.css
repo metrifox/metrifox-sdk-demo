@@ -4,9 +4,9 @@
   align-items: flex-start; /* keep frame at top so nothing is cut off */
   width: 100%;
   min-height: 100%;
-  background-color: #0f172a;
+  background-color: #27272a;
   background-image:
-    radial-gradient(#1e293b 1px, transparent 1px);
+    radial-gradient(#3f3f46 1px, transparent 1px);
   background-size: 24px 24px;
   padding: 24px 40px 40px;
   overflow-y: auto;
@@ -19,7 +19,7 @@
   width: 100%;
   max-width: 1024px;
   flex-shrink: 0;
-  background: #0f172a;
+  background: #27272a;
   border-radius: 12px;
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.1),
@@ -52,7 +52,7 @@
 
 .pg-window-header {
   height: 48px;
-  background: #1e293b;
+  background: #3f3f46;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   align-items: center;
@@ -80,14 +80,14 @@
   flex: 1;
   max-width: 400px;
   height: 28px;
-  background: #0f172a;
+  background: #27272a;
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: monospace;
   font-size: 12px;
-  color: #64748b;
+  color: #71717a;
   margin: 0 auto;
 }
 
@@ -101,7 +101,7 @@
 .pg-header-icon {
   width: 16px;
   height: 16px;
-  background: #334155;
+  background: #52525b;
   border-radius: 50%;
 }
 .pg-header-icon.rounded {
@@ -111,7 +111,7 @@
 .pg-window-content {
   flex: 1;
   overflow: auto;
-  background: #0f172a;
+  background: #27272a;
   position: relative;
 }
 
