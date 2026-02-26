@@ -47,6 +47,13 @@
   color: #fafafa;
 }
 
+.tp-root-description {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  margin: -0.5rem 0 0.75rem 0;
+  color: #71717a;
+}
+
 .tp-section-header {
   display: flex;
   align-items: center;
@@ -94,6 +101,21 @@
   font-weight: 500;
   color: #d4d4d8;
   margin-bottom: 0.375rem;
+}
+
+.tp-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: #d4d4d8;
+  cursor: pointer;
+}
+
+.tp-toggle input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: #3b82f6;
 }
 
 /* Inputs */
@@ -209,6 +231,10 @@
 
 .pg-theme-light .tp-root-header:hover .tp-root-title {
   color: #0f172a;
+}
+
+.pg-theme-light .tp-root-description {
+  color: #64748b;
 }
 
 .pg-theme-light .tp-section-header {

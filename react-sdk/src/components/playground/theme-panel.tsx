@@ -5,6 +5,8 @@ type ThemeConfigPanelProps = {
   theme: Record<string, unknown>
   onChange: (path: string, value: unknown) => void
   searchQuery?: string
+  /** Optional short description per theme section (e.g. general, tabs, sections) */
+  sectionDescriptions?: Record<string, string>
 }
 
 const formatLabel = (key: string) => {
@@ -106,6 +108,7 @@ const ConfigItem = ({
   itemKey: string
 }) => {
   const strValue = typeof value === "string" ? value : String(value ?? "")
+  const isBoolean = typeof value === "boolean"
   const isColor =
     (typeof value === "string" && value.startsWith("#")) ||
     (typeof value === "string" && value.startsWith("rgb")) ||
@@ -118,7 +121,16 @@ const ConfigItem = ({
   return (
     <div className="tp-config-item">
       <label className="tp-label">{label}</label>
-      {isColor ? (
+      {isBoolean ? (
+        <label className="tp-toggle">
+          <input
+            type="checkbox"
+            checked={value === true}
+            onChange={(e) => onChange(e.target.checked)}
+          />
+          <span>{value === true ? "On" : "Off"}</span>
+        </label>
+      ) : isColor ? (
         <ColorInput value={strValue} onChange={(val) => onChange(val)} />
       ) : isBorderRadius || isSpacing ? (
         <SliderInput value={strValue} onChange={(val) => onChange(val)} />
@@ -136,10 +148,12 @@ const ConfigItem = ({
 
 const CollapsibleRootSection = ({
   title,
+  description,
   children,
   searchQuery,
 }: {
   title: string
+  description?: string
   children: React.ReactNode
   searchQuery: string
 }) => {
@@ -152,6 +166,7 @@ const CollapsibleRootSection = ({
         <h3 className="tp-root-title">{title}</h3>
         <span className={`tp-chevron ${effectiveOpen ? "open" : ""}`}>›</span>
       </button>
+      {description && <p className="tp-root-description">{description}</p>}
       {effectiveOpen && <div className="tp-root-content">{children}</div>}
     </div>
   )
@@ -238,7 +253,12 @@ const RecursiveGroup = ({
   )
 }
 
-export const ThemeConfigPanel = ({ theme, onChange, searchQuery = "" }: ThemeConfigPanelProps) => {
+export const ThemeConfigPanel = ({
+  theme,
+  onChange,
+  searchQuery = "",
+  sectionDescriptions,
+}: ThemeConfigPanelProps) => {
   const sections = Object.keys(theme)
   const q = searchQuery.trim().toLowerCase()
 
@@ -253,6 +273,7 @@ export const ThemeConfigPanel = ({ theme, onChange, searchQuery = "" }: ThemeCon
         <CollapsibleRootSection
           key={sectionKey}
           title={formatLabel(sectionKey)}
+          description={sectionDescriptions?.[sectionKey]}
           searchQuery={searchQuery}
         >
           <RecursiveGroup
