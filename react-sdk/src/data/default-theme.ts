@@ -1,4 +1,5 @@
-// Default configuration for customer portal (matches CustomerPortalTheme)
+// Default configuration for customer portal (matches CustomerPortalTheme in SDK).
+// Popover theme is not included here; it will be added in a future release.
 export const defaultCustomerPortalTheme = {
   general: {
     linkColor: "#006FEE",
@@ -19,21 +20,23 @@ export const defaultCustomerPortalTheme = {
     padding: "0px",
     borderColor: "transparent",
     borderRadius: "8px",
-
+    emptyTextColor: "#9ca3af",
+    usage: {
+      barColor: "#006FEE",
+      trackColor: "#e5e7eb",
+    },
     content: {
       background: "#F4F4F5",
       padding: "24px",
       borderColor: "#E4E4E7",
       borderRadius: "8px",
     },
-
     summary: {
       background: "#ffffff",
       padding: "24px",
       borderColor: "#E4E4E7",
       borderRadius: "8px",
     },
-
     header: {
       fontSize: "16px",
       fontWeight: "600",
@@ -49,9 +52,6 @@ export const defaultCustomerPortalTheme = {
       fontWeight: "500",
       color: "#52525B",
     },
-
-    emptyTextColor: "#9ca3af",
-    usageBarColor: "#006FEE",
   },
   buttons: {
     primary: {
@@ -99,28 +99,6 @@ export const defaultCustomerPortalTheme = {
       },
     },
   },
-  popover: {
-    trigger: {
-      background: "#ffffff",
-      iconColor: "#52525B",
-      borderColor: "#E4E4E7",
-      borderRadius: "8px",
-    },
-    menu: {
-      background: "#ffffff",
-      borderColor: "#E4E4E7",
-      borderRadius: "8px",
-      padding: "0.5rem",
-      itemHoverBackground: "#F4F4F5",
-      itemDividerColor: "#E4E4E7",
-      typography: {
-        fontSize: "14px",
-        fontWeight: "500",
-        color: "#52525B",
-        dangerColor: "#ef4444",
-      },
-    },
-  },
   tables: {
     headerBackground: "#e5e7eb",
     headerTextColor: "#191919",
@@ -129,13 +107,12 @@ export const defaultCustomerPortalTheme = {
     rowTextColor: "#111827",
     borderColor: "#e5e7eb",
     cellPadding: "1rem 0.75rem",
-    pagination: {
-      background: "transparent",
-      activeBackground: "#e5e7eb",
-      textColor: "#6b7280",
-      activeTextColor: "#1f2937",
-      borderColor: "#e5e7eb",
-      borderRadius: "8px",
+    expandIconColor: "#71717a",
+    typography: {
+      fontSize: "16px",
+      fontWeight: "500",
+      headerFontSize: "16px",
+      headerFontWeight: "600",
     },
   },
   modals: {

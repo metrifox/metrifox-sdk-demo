@@ -13,8 +13,12 @@ A production-ready demo application showcasing the integration of the **Metrifox
 
 ```bash
 src/
+├── components/
+│   └── playground/            # Playground UI (preview, theme panel, config)
 ├── config/
 │   └── metrifox-provider.tsx  # SDK Initialization & Context
+├── data/
+│   └── default-theme.ts       # Default Customer Portal theme (matches SDK)
 ├── modules/
 │   ├── customer-portal/       # Customer Portal Widget integration
 │   └── pricing-table/         # Pricing Table Widget integration
@@ -68,6 +72,16 @@ Wrap your application with the provider in `main.tsx`:
   <App />
 </MetrifoxSDKProvider>
 ```
+
+## Playground & theme
+
+The demo includes a **playground** where you can:
+
+- **Preview** the Customer Portal or Pricing Table in desktop/tablet/mobile view.
+- **Edit theme** via the theme panel. The config matches the SDK’s `CustomerPortalTheme`: `general`, `tabs`, `sections`, `buttons`, `lineItems`, `tables`, `modals`, `plans`. The default theme lives in `src/data/default-theme.ts` and is kept in sync with the SDK default theme.
+- **Configure** API keys and other widget options in the config panel.
+
+Theme changes and config values are applied live to the preview and can be copied as JSON or code.
 
 ## Widgets
 
