@@ -141,6 +141,20 @@
   color: var(--pg-dark-text);
 }
 
+.pg-widget-description {
+  font-size: 12px;
+  line-height: 1.4;
+  margin-top: 8px;
+}
+
+.pg-theme-dark .pg-widget-description {
+  color: var(--pg-dark-text-muted);
+}
+
+.pg-theme-light .pg-widget-description {
+  color: #64748b;
+}
+
 /* Theme search (inside Theme Settings section) */
 .pg-theme-search-wrap {
   margin-bottom: 12px;
@@ -512,6 +526,20 @@
 }
 
 .pg-theme-light .pg-section-title {
+  color: #64748b;
+}
+
+.pg-section-description {
+  font-size: 12px;
+  margin: -6px 0 10px 0;
+  line-height: 1.4;
+}
+
+.pg-theme-dark .pg-section-description {
+  color: var(--pg-dark-text-muted);
+}
+
+.pg-theme-light .pg-section-description {
   color: #64748b;
 }
 

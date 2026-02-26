@@ -5,6 +5,8 @@ type ConfigPanelProps = {
   values: Record<string, ConfigValue>
   onChange: (key: string, value: ConfigValue) => void
   collapsed?: boolean
+  /** Optional short description per section (section key -> description) */
+  sectionDescriptions?: Record<string, string>
 }
 
 export const ConfigPanel = ({
@@ -12,6 +14,7 @@ export const ConfigPanel = ({
   values,
   onChange,
   collapsed,
+  sectionDescriptions,
 }: ConfigPanelProps) => {
   // Always render the structure, but hide content if collapsed
 
@@ -39,6 +42,9 @@ export const ConfigPanel = ({
                 return sections.map((section) => (
                   <div key={section} className="pg-config-section">
                     <h4 className="pg-section-title uppercase">{section}</h4>
+                    {sectionDescriptions?.[section] && (
+                      <p className="pg-section-description">{sectionDescriptions[section]}</p>
+                    )}
                     {configs
                       .filter((config) => (config.section || "general") === section)
                       .map((config) => (
