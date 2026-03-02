@@ -1,7 +1,7 @@
 .pg-preview-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* keep frame at top so nothing is cut off */
+  align-items: flex-start;
   width: 100%;
   min-height: 100%;
   background-color: #27272a;
@@ -28,7 +28,7 @@
   flex-direction: column;
   overflow: hidden;
   height: 800px;
-  max-height: calc(100vh - 64px - 48px); /* topbar - padding */
+  max-height: calc(100vh - 64px - 48px);
   transition: max-width 0.3s ease, height 0.3s ease, max-height 0.3s ease;
 }
 
@@ -115,7 +115,6 @@
   position: relative;
 }
 
-/* Light theme preview */
 .pg-theme-light .pg-preview-container {
   background-color: #cbd5e1;
   background-image: radial-gradient(#94a3b8 1px, transparent 1px);

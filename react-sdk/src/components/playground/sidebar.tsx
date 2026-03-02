@@ -1,6 +1,6 @@
 import type { WidgetDefinition } from "../../types/widget"
-import logo from "../../assets/logo.png"
-import icon from "../../assets/icon.png"
+import logo from "../../../assets/logo.png"
+import icon from "../../../assets/icon.png"
 
 type SidebarProps = {
   widgets: WidgetDefinition[]
@@ -23,7 +23,6 @@ export const Sidebar = ({
 }: SidebarProps) => {
   return (
     <>
-      {/* Mobile Overlay */}
       <div
         className={`pg-sidebar-overlay ${isMobileOpen ? "open" : ""}`}
         onClick={onCloseMobile}
@@ -32,7 +31,6 @@ export const Sidebar = ({
       <aside
         className={`pg-sidebar ${collapsed ? "collapsed" : ""} ${isMobileOpen ? "mobile-open" : ""}`}
       >
-        {/* Toggle Button - Desktop Only */}
         <button
           className="pg-sidebar-toggle"
           onClick={onToggleCollapse}
@@ -41,7 +39,6 @@ export const Sidebar = ({
           {collapsed ? "»" : "«"}
         </button>
 
-        {/* Close Button - Mobile Only */}
         <button
           className="pg-sidebar-mobile-close"
           onClick={onCloseMobile}

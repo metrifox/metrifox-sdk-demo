@@ -1,6 +1,6 @@
 import type { ComponentType } from "react"
 import type { ConfigValue } from "../../types/widget"
-import "./preview.css"
+import "./styles/preview.css"
 
 type PreviewProps = {
   Component: ComponentType<Record<string, ConfigValue>>

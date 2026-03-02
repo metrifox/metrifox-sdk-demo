@@ -1,11 +1,10 @@
 import { useState, type ChangeEvent, useEffect } from "react"
-import "./theme-panel.css"
+import "./styles/theme-panel.css"
 
 type ThemeConfigPanelProps = {
   theme: Record<string, unknown>
   onChange: (path: string, value: unknown) => void
   searchQuery?: string
-  /** Optional short description per theme section (e.g. general, tabs, sections) */
   sectionDescriptions?: Record<string, string>
 }
 
@@ -172,7 +171,6 @@ const CollapsibleRootSection = ({
   )
 }
 
-/** One expand/collapse state per section so toggling one does not affect others */
 const CollapsibleSection = ({
   label,
   level,
@@ -200,7 +198,6 @@ const CollapsibleSection = ({
   )
 }
 
-/** Renders theme data tree. Search is not used here – only root group names are filtered in ThemeConfigPanel. */
 const RecursiveGroup = ({
   data,
   path,
@@ -262,7 +259,6 @@ export const ThemeConfigPanel = ({
   const sections = Object.keys(theme)
   const q = searchQuery.trim().toLowerCase()
 
-  // Filter only by root group name (e.g. general, sections, plans). Expanded content is never filtered.
   const visibleSections = q
     ? sections.filter((sectionKey) => sectionKey.toLowerCase().includes(q))
     : sections

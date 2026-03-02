@@ -1,3 +1,4 @@
+
 import type { WidgetConfigParam, ConfigValue } from "../../types/widget"
 
 type ConfigPanelProps = {
@@ -16,11 +17,8 @@ export const ConfigPanel = ({
   collapsed,
   sectionDescriptions,
 }: ConfigPanelProps) => {
-  // Always render the structure, but hide content if collapsed
-
   return (
     <div className="pg-config-panel">
-      {/* Header */}
       {!collapsed && (
         <div className="pg-config-header">
           <h3>Configuration</h3>

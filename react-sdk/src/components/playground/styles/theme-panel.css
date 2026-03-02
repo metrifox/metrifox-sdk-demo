@@ -220,7 +220,7 @@
   margin-left: 0.25rem;
 }
 
-/* Light theme overrides (when parent has .pg-theme-light) */
+/* Light theme overrides */
 .pg-theme-light .tp-root-section {
   border-bottom-color: #e2e8f0;
 }

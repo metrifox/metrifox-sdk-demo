@@ -30,11 +30,26 @@ export const defaultCustomerPortalTheme = {
       borderColor: "#E4E4E7",
       borderRadius: "8px",
     },
-    summary: {
+    summaryBalance: {
       background: "#ffffff",
       padding: "24px",
       borderColor: "#E4E4E7",
       borderRadius: "8px",
+      label: {
+        fontSize: "13px",
+        fontWeight: "500",
+        color: "#71717A",
+      },
+      value: {
+        fontSize: "20px",
+        fontWeight: "700",
+        color: "#52525B",
+      },
+      unit: {
+        fontSize: "13px",
+        fontWeight: "500",
+        color: "#52525B",
+      },
     },
     header: {
       fontSize: "16px",
@@ -158,8 +173,11 @@ export const defaultCustomerPortalTheme = {
     },
     planCards: {
       background: "#ffffff",
-      borderColor: "#e5e7eb",
-      descriptionColor: "#374151",
+      border: {
+        color: "#e5e7eb",
+        width: "1px",
+        radius: "1rem",
+      },
       header: {
         background: "#e5e7eb",
         textColor: "#111827",
@@ -197,46 +215,65 @@ export const defaultCustomerPortalTheme = {
   },
 }
 
-// Default theme for Pricing cards (nested shape matching SDK PricingTableTheme).
+// Default theme for Pricing table (plans nested like customer portal theme.plans).
 export const defaultPricingTableTheme: Record<string, unknown> = {
-  card: {
-    background: "#ffffff",
-    borderColor: "#e5e7eb",
-    header: {
-      background: "#f9fafb",
-      textColor: "#111827",
+  plans: {
+    currentPlanCard: {
+      header: {
+        background: "#e5e7eb",
+        textColor: "#111827",
+      },
+      gradientColor: "#e5e7eb",
     },
-    description: {
-      textColor: "#6b7280",
-    },
-    price: {
-      amountColor: "#111827",
-      primaryTextColor: "#374151",
-      secondaryTextColor: "#9ca3af",
+    planCards: {
       background: "#ffffff",
+      border: {
+        color: "#e5e7eb",
+        width: "1px",
+        radius: "1rem",
+      },
+      header: {
+        background: "#f9fafb",
+        textColor: "#111827",
+      },
+      description: {
+        textColor: "#6b7280",
+        textButtonColor: "#2563eb",
+      },
+      price: {
+        amountColor: "#111827",
+        primaryTextColor: "#374151",
+        secondaryTextColor: "#9ca3af",
+        background: "transparent",
+        borderColor: "transparent",
+      },
     },
-  },
-  button: {
-    background: "#2563eb",
-    textColor: "#ffffff",
-    secondaryBackground: "#f3f4f6",
-    secondaryTextColor: "#374151",
-  },
-  featureList: {
-    textColor: "#374151",
-    iconColor: "#2563eb",
+    planFeatures: {
+      textColor: "#374151",
+      iconColor: "#2563eb",
+    },
+    planButton: {
+      background: "#2563eb",
+      textColor: "#ffffff",
+      secondaryBackground: "#f3f4f6",
+      secondaryTextColor: "#374151",
+    },
+    planToggle: {
+      background: "#e5e7eb",
+      activeBackground: "#111827",
+      activeText: "#ffffff",
+      inactiveText: "#6b7280",
+    },
+    planTags: {
+      freeTrialBackground: "#dbeafe",
+      freeTrialText: "#1e40af",
+    },
   },
   tabs: {
     activeText: "#2563eb",
     inactiveText: "#6b7280",
     indicator: "#2563eb",
     borderColor: "#e5e7eb",
-  },
-  intervalToggle: {
-    background: "#e5e7eb",
-    activeBackground: "#111827",
-    activeText: "#ffffff",
-    inactiveText: "#6b7280",
   },
   display: {
     plansOnly: false,
