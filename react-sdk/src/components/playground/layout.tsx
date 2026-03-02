@@ -1,65 +1,41 @@
-import { useState, useMemo, useEffect } from "react"
-import { ConfigPanel } from "./config-panel"
-import { Preview } from "./preview"
-import { ThemeConfigPanel } from "./theme-panel"
+import { useState, useMemo, useEffect, useRef, useCallback } from "react"
+import { ConfigPanel } from "./components/config-panel"
+import { Preview } from "./components/preview"
+import { ThemeConfigPanel } from "./components/theme-panel"
+import { EditableCodeView } from "./components/editable-code-view"
+import { TABS, PREVIEW_MODES } from "./constants"
+import { SearchIcon } from "./playground-icons"
+import { setNestedValue, flattenTheme } from "./utils/theme-utils"
+import { buildCodeSnippet } from "./utils/code-snippet"
 import type { WidgetDefinition, ConfigValue } from "../../types/widget"
 import metrifoxLogo from "../../assets/metrifox-logo.png"
-import "./playground.css"
+import "./styles/playground.css"
 import { THEME } from "../../types/enums"
 
 type LayoutProps = { widgets: WidgetDefinition[] }
 
-function setNestedValue(
-  obj: Record<string, unknown>,
-  path: string,
-  value: unknown,
-): Record<string, unknown> {
-  if (path.includes(".")) {
-    const [head, ...tail] = path.split(".")
-    const current = (obj[head] as Record<string, unknown>) || {}
-    return { ...obj, [head]: setNestedValue(current, tail.join("."), value) }
-  }
-  return { ...obj, [path]: value }
-}
-
-function flattenTheme(
-  obj: Record<string, unknown>,
-  prefix: string,
-): Record<string, unknown> {
-  return Object.keys(obj).reduce((acc: Record<string, unknown>, key: string) => {
-    const value = obj[key]
-    const newKey = prefix ? `${prefix}.${key}` : key
-    if (typeof value === "object" && value !== null && !Array.isArray(value)) {
-      Object.assign(acc, flattenTheme(value as Record<string, unknown>, newKey))
-    } else {
-      acc[newKey] = value
-    }
-    return acc
-  }, {})
-}
-
-export function PlaygroundLayout({ widgets }: LayoutProps) {
+export const PlaygroundLayout = ({ widgets }: LayoutProps) => {
   const [activeWidgetId, setActiveWidgetId] = useState(widgets[0].id)
   const [themeMode, setThemeMode] = useState<typeof THEME.LIGHT | typeof THEME.DARK>(() =>
-    typeof window !== "undefined" && window.matchMedia?.("(prefers-color-scheme: dark)")?.matches
-      ? THEME.DARK
-      : THEME.LIGHT,
+    typeof window !== "undefined" && window.matchMedia?.("(prefers-color-scheme: dark)")?.matches ? THEME.DARK : THEME.LIGHT,
   )
   const [activeTab, setActiveTab] = useState<"preview" | "json" | "code">("preview")
   const [previewMode, setPreviewMode] = useState<"desktop" | "tablet" | "mobile">("desktop")
   const [searchQuery, setSearchQuery] = useState("")
   const [widgetConfigs, setWidgetConfigs] = useState<Record<string, Record<string, ConfigValue>>>({})
   const [widgetThemeConfigs, setWidgetThemeConfigs] = useState<Record<string, Record<string, unknown>>>({})
+  const [jsonEditText, setJsonEditText] = useState("")
+  const [codeEditText, setCodeEditText] = useState("")
+  const [copied, setCopied] = useState<"json" | "code" | null>(null)
+  const jsonDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const activeWidget = useMemo(
     () => widgets.find((w) => w.id === activeWidgetId) ?? widgets[0],
     [widgets, activeWidgetId],
   )
-  const themeScope = activeWidget.themeScope ?? "customerPortal"
 
   const activeTheme = useMemo(
-    () =>
-      (widgetThemeConfigs[activeWidgetId] ?? activeWidget.defaultTheme ?? {}) as Record<string, unknown>,
+    () => (widgetThemeConfigs[activeWidgetId] ?? activeWidget.defaultTheme ?? {}) as Record<string, unknown>,
     [widgetThemeConfigs, activeWidgetId, activeWidget.defaultTheme],
   )
 
@@ -70,37 +46,93 @@ export function PlaygroundLayout({ widgets }: LayoutProps) {
 
   const currentWidgetValues = useMemo(() => {
     const defaults: Record<string, ConfigValue> = {}
-    activeWidget.configs?.forEach((c) => {
-      if (c.defaultValue !== undefined) defaults[c.key] = c.defaultValue
+    activeWidget.configs?.forEach((config) => {
+      if (config.defaultValue !== undefined) defaults[config.key] = config.defaultValue
     })
     return { ...defaults, ...(widgetConfigs[activeWidgetId] ?? {}) }
   }, [activeWidget, widgetConfigs, activeWidgetId])
 
   const combinedValues = useMemo((): Record<string, ConfigValue> => {
-    const prefix = `theme.${themeScope}`
+    const prefix = `theme.${activeWidget.themeScope ?? "customerPortal"}`
     const flattened = flattenTheme(activeTheme, prefix)
-    const display = (activeTheme.display as Record<string, ConfigValue> | undefined)
-    const topLevelDisplay = display ? { ...display } : {}
-    return { ...currentWidgetValues, ...flattened, ...topLevelDisplay } as Record<string, ConfigValue>
-  }, [currentWidgetValues, activeTheme, themeScope])
+    const display = activeTheme.display as Record<string, ConfigValue> | undefined
+    return { ...currentWidgetValues, ...flattened, ...(display ?? {}) } as Record<string, ConfigValue>
+  }, [currentWidgetValues, activeTheme, activeWidget.themeScope])
 
-  const setWidgetConfig = (key: string, value: ConfigValue) => {
-    setWidgetConfigs((prev) => ({
-      ...prev,
-      [activeWidgetId]: { ...(prev[activeWidgetId] ?? {}), [key]: value },
-    }))
-  }
+  const codeSnippet = useMemo(
+    () => buildCodeSnippet(activeWidgetId, activeWidget, activeTheme, currentWidgetValues),
+    [activeWidgetId, activeWidget, activeTheme, currentWidgetValues],
+  )
 
-  const setTheme = (path: string, value: unknown) => {
-    setWidgetThemeConfigs((prev) => ({
-      ...prev,
-      [activeWidgetId]: setNestedValue(
-        { ...(prev[activeWidgetId] ?? activeTheme) } as Record<string, unknown>,
-        path,
-        value,
-      ) as Record<string, unknown>,
-    }))
-  }
+  const setFullTheme = useCallback(
+    (theme: Record<string, unknown>) => {
+      setWidgetThemeConfigs((prev) => ({ ...prev, [activeWidgetId]: theme }))
+    },
+    [activeWidgetId],
+  )
+
+  const setWidgetConfig = useCallback(
+    (key: string, value: ConfigValue) => {
+      setWidgetConfigs((prev) => ({
+        ...prev,
+        [activeWidgetId]: { ...(prev[activeWidgetId] ?? {}), [key]: value },
+      }))
+    },
+    [activeWidgetId],
+  )
+
+  const setTheme = useCallback(
+    (path: string, value: unknown) => {
+      setWidgetThemeConfigs((prev) => ({
+        ...prev,
+        [activeWidgetId]: setNestedValue(
+          { ...(prev[activeWidgetId] ?? activeTheme) } as Record<string, unknown>,
+          path,
+          value,
+        ) as Record<string, unknown>,
+      }))
+    },
+    [activeWidgetId, activeTheme],
+  )
+
+  const handleCopy = useCallback(async (content: string, which: "json" | "code") => {
+    try {
+      await navigator.clipboard.writeText(content)
+      setCopied(which)
+      setTimeout(() => setCopied(null), 2000)
+    } catch {
+      // ignore
+    }
+  }, [])
+
+  const handleJsonChange = useCallback(
+    (value: string) => {
+      setJsonEditText(value)
+      if (jsonDebounceRef.current) clearTimeout(jsonDebounceRef.current)
+      jsonDebounceRef.current = setTimeout(() => {
+        try {
+          const parsed = JSON.parse(value) as unknown
+          if (parsed !== null && typeof parsed === "object" && !Array.isArray(parsed)) {
+            setFullTheme(parsed as Record<string, unknown>)
+          }
+        } catch {
+          // invalid JSON
+        }
+        jsonDebounceRef.current = null
+      }, 500)
+    },
+    [setFullTheme],
+  )
+
+  useEffect(() => {
+    if (activeTab === "json") {
+      const next = JSON.stringify(activeTheme, null, 2)
+      queueMicrotask(() => setJsonEditText(next))
+    }
+    if (activeTab === "code") {
+      queueMicrotask(() => setCodeEditText(codeSnippet))
+    }
+  }, [activeTab, activeTheme, codeSnippet])
 
   useEffect(() => {
     const root = document.documentElement
@@ -108,35 +140,6 @@ export function PlaygroundLayout({ widgets }: LayoutProps) {
     root.classList.add(themeMode)
     root.setAttribute("data-theme", themeMode)
   }, [themeMode])
-
-  const codeSnippet = useMemo(() => {
-    if (activeWidgetId === "customer-portal") {
-      return `import { CustomerPortal } from '@metrifox/react-sdk';
-
-<CustomerPortal 
-  clientKey="${currentWidgetValues.clientKey ?? ""}"
-  customerKey="${currentWidgetValues.customerKey ?? ""}"
-  theme={${JSON.stringify(activeTheme, null, 2)}} 
-/>`
-    }
-    if (activeWidgetId === "pricing-table") {
-      const { display, ...themeForSdk } = activeTheme
-      return `import { PricingTable } from '@metrifox/react-sdk';
-
-<PricingTable 
-  checkoutUsername="${currentWidgetValues.checkoutKey ?? ""}"
-  productKey="${currentWidgetValues.productKey ?? ""}"
-  plansOnly={${(display as Record<string, unknown>)?.plansOnly ?? false}}
-  singlePurchasesOnly={${(display as Record<string, unknown>)?.singlePurchasesOnly ?? false}}
-  showTabHeader={${(display as Record<string, unknown>)?.showTabHeader ?? true}}
-  theme={{ pricingTable: ${JSON.stringify(themeForSdk, null, 2)} }} 
-/>`
-    }
-    return `import { Widget } from '@metrifox/react-sdk';
-
-// Replace with the appropriate component for ${activeWidget.name}
-<Widget />`
-  }, [activeWidgetId, activeWidget.name, activeTheme, currentWidgetValues])
 
   return (
     <div className={`pg-layout new-design pg-theme-${themeMode}`}>
@@ -146,9 +149,7 @@ export function PlaygroundLayout({ widgets }: LayoutProps) {
             <img src={metrifoxLogo} alt="Metrifox" className="pg-logo-img" />
           </div>
           <div className="pg-widget-select-wrap">
-            <label htmlFor="pg-widget-select" className="pg-widget-select-label">
-              Widget
-            </label>
+            <label htmlFor="pg-widget-select" className="pg-widget-select-label">Widget</label>
             <select
               id="pg-widget-select"
               className="pg-widget-select"
@@ -159,9 +160,7 @@ export function PlaygroundLayout({ widgets }: LayoutProps) {
                 <option key={w.id} value={w.id}>{w.name}</option>
               ))}
             </select>
-            {activeWidget.description && (
-              <p className="pg-widget-description">{activeWidget.description}</p>
-            )}
+            {activeWidget.description && <p className="pg-widget-description">{activeWidget.description}</p>}
           </div>
         </div>
 
@@ -170,11 +169,7 @@ export function PlaygroundLayout({ widgets }: LayoutProps) {
             <div className="pg-config-group">
               <h3 className="pg-group-title">API Configuration</h3>
               <div className="pg-group-content">
-                <ConfigPanel
-                  configs={apiConfigs}
-                  values={currentWidgetValues}
-                  onChange={setWidgetConfig}
-                />
+                <ConfigPanel configs={apiConfigs} values={currentWidgetValues} onChange={setWidgetConfig} />
               </div>
             </div>
           )}
@@ -182,12 +177,14 @@ export function PlaygroundLayout({ widgets }: LayoutProps) {
           <div className="pg-config-group">
             <h3 className="pg-group-title">Theme settings</h3>
             <div className="pg-theme-search-wrap">
+              <SearchIcon />
               <input
                 type="text"
                 placeholder="Search theme..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pg-theme-search-input"
+                aria-label="Search theme"
               />
             </div>
             <ThemeConfigPanel
@@ -203,14 +200,14 @@ export function PlaygroundLayout({ widgets }: LayoutProps) {
       <main className="pg-main-area">
         <header className="pg-topbar">
           <div className="pg-tabs">
-            {(["preview", "json", "code"] as const).map((tab) => (
+            {TABS.map((tab) => (
               <button
-                key={tab}
-                className={`pg-tab ${activeTab === tab ? "active" : ""}`}
-                onClick={() => setActiveTab(tab)}
+                key={tab.id}
+                className={`pg-tab ${activeTab === tab.id ? "active" : ""}`}
+                onClick={() => setActiveTab(tab.id)}
               >
-                {tab === "preview" ? "Live Preview" : tab === "json" ? "JSON Config" : "Code Snippet"}
-                {tab === "code" && <span className="pg-badge">React</span>}
+                {tab.label}
+                {tab.badge && <span className="pg-badge">{tab.badge}</span>}
               </button>
             ))}
           </div>
@@ -223,7 +220,7 @@ export function PlaygroundLayout({ widgets }: LayoutProps) {
               </svg>
             </a>
             <div className="pg-divider" />
-            {(["desktop", "tablet", "mobile"] as const).map((mode) => (
+            {PREVIEW_MODES.map((mode) => (
               <button
                 key={mode}
                 className={`pg-icon-btn ${previewMode === mode ? "active" : ""}`}
@@ -244,14 +241,24 @@ export function PlaygroundLayout({ widgets }: LayoutProps) {
             <Preview Component={activeWidget.component} configValues={combinedValues} mode={previewMode} />
           )}
           {activeTab === "json" && (
-            <div className="pg-code-view">
-              <pre>{JSON.stringify(activeTheme, null, 2)}</pre>
-            </div>
+            <EditableCodeView
+              value={jsonEditText}
+              onChange={handleJsonChange}
+              onCopy={() => handleCopy(jsonEditText, "json")}
+              isCopied={copied === "json"}
+              copyLabel="Copy JSON"
+              ariaLabel="JSON config"
+            />
           )}
           {activeTab === "code" && (
-            <div className="pg-code-view">
-              <pre>{codeSnippet}</pre>
-            </div>
+            <EditableCodeView
+              value={codeEditText}
+              onChange={setCodeEditText}
+              onCopy={() => handleCopy(codeEditText, "code")}
+              isCopied={copied === "code"}
+              copyLabel="Copy code"
+              ariaLabel="Code snippet"
+            />
           )}
         </div>
       </main>

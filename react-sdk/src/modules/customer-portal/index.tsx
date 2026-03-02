@@ -1,7 +1,7 @@
 import { CustomerPortal, metrifoxInit } from "@metrifox/react-sdk"
 import "@metrifox/react-sdk/dist/styles.css"
 import { useEffect } from "react"
-import { EmptyState } from "../../components/playground/empty-state"
+import { EmptyState } from "../../components/playground/components/empty-state"
 import { extractThemeConfig } from "../../utils/object"
 import type { ConfigValue } from "../../types/widget"
 

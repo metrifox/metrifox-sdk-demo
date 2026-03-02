@@ -1,6 +1,6 @@
 import { PricingTable, metrifoxInit } from "@metrifox/react-sdk"
 import { useEffect } from "react"
-import { EmptyState } from "../../components/playground/empty-state"
+import { EmptyState } from "../../components/playground/components/empty-state"
 import { extractThemeConfig } from "../../utils/object"
 import type { ConfigValue } from "../../types/widget"
 

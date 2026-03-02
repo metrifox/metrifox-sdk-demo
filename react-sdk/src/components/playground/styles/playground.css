@@ -158,12 +158,28 @@
 /* Theme search (inside Theme Settings section) */
 .pg-theme-search-wrap {
   margin-bottom: 12px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.pg-theme-search-wrap .pg-theme-search-icon {
+  position: absolute;
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  color: var(--pg-search-icon, #94a3b8);
+}
+
+.pg-theme-dark .pg-theme-search-wrap .pg-theme-search-icon {
+  color: var(--pg-dark-text-dim);
 }
 
 .pg-theme-search-input {
   width: 100%;
   border-radius: 6px;
-  padding: 8px 12px;
+  padding: 8px 12px 8px 36px;
   font-size: 13px;
   outline: none;
 }
@@ -286,16 +302,6 @@
 
 .pg-tab.active {
   color: #3b82f6;
-}
-
-.pg-tab.active::after {
-  content: '';
-  position: absolute;
-  bottom: -21px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #3b82f6;
 }
 
 .pg-badge {
