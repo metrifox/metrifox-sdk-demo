@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent, useEffect } from "react"
-import "../styles/theme-panel.css"
+import "./styles/theme-panel.css"
 
 type ThemeConfigPanelProps = {
   theme: Record<string, unknown>

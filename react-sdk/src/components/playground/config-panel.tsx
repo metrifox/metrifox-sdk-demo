@@ -1,4 +1,5 @@
-import type { WidgetConfigParam, ConfigValue } from "../../../types/widget"
+
+import type { WidgetConfigParam, ConfigValue } from "../../types/widget"
 
 type ConfigPanelProps = {
   configs?: WidgetConfigParam[]

@@ -1,4 +1,4 @@
-import type { WidgetDefinition } from "../../../types/widget"
+import type { WidgetDefinition } from "../../types/widget"
 import logo from "../../../assets/logo.png"
 import icon from "../../../assets/icon.png"
 

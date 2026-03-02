@@ -1,4 +1,4 @@
-import { CopyIcon } from "../playground-icons"
+import { CopyIcon } from "./playground-icons"
 
 export type EditableCodeViewProps = {
   value: string
