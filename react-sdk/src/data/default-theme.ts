@@ -10,7 +10,7 @@ export const defaultCustomerPortalTheme = {
   tabs: {
     tabBackground: "#ffffff",
     tabBorderColor: "#E4E4E7",
-    activeTabBackground: "#006FEE",
+    activeTabBackground: "#3D3D3D",
     activeTabTextColor: "#ffffff",
     inactiveTabTextColor: "#6b7280",
   },
@@ -69,7 +69,7 @@ export const defaultCustomerPortalTheme = {
   },
   buttons: {
     primary: {
-      backgroundColor: "#111827",
+      backgroundColor: "#3D3D3D",
       border: {
         color: "#52525B",
         width: "1px",
@@ -196,10 +196,10 @@ export const defaultCustomerPortalTheme = {
     },
     planFeatures: {
       textColor: "#374151",
-      iconColor: "#2563eb",
+      iconColor: "#0BB02F",
     },
     planButton: {
-      background: "#2563eb",
+      background: "#3D3D3D",
       textColor: "#ffffff",
     },
     planToggle: {
@@ -250,10 +250,10 @@ export const defaultPricingTableTheme: Record<string, unknown> = {
     },
     planFeatures: {
       textColor: "#374151",
-      iconColor: "#2563eb",
+      iconColor: "#0BB02F",
     },
     planButton: {
-      background: "#2563eb",
+      background: "#3D3D3D",
       textColor: "#ffffff",
       secondaryBackground: "#f3f4f6",
       secondaryTextColor: "#374151",
@@ -270,10 +270,10 @@ export const defaultPricingTableTheme: Record<string, unknown> = {
     },
   },
   tabs: {
-    activeText: "#2563eb",
+    activeText: "#FFFFFF",
     inactiveText: "#6b7280",
-    indicator: "#2563eb",
-    borderColor: "#e5e7eb",
+    indicator: "#FFFFFF",
+    borderColor: "#3D3D3D",
   },
   display: {
     plansOnly: false,
