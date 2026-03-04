@@ -4,7 +4,7 @@ export const defaultCustomerPortalTheme = {
     linkColor: "#006FEE",
     backgroundColor: "#ffffff",
     borderRadius: "16px",
-    fontFamily: '"Geist", "Inter", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Space Grotesk", sans-serif',
     containerPadding: "24px",
   },
   tabs: {
