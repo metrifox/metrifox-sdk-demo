@@ -116,6 +116,7 @@ const ConfigItem = ({
 
   const isBorderRadius = itemKey.toLowerCase().includes("radius")
   const isSpacing = itemKey.toLowerCase().includes("padding") || itemKey.toLowerCase().includes("gap")
+  const isFontFamily = itemKey === "fontFamily"
 
   return (
     <div className="tp-config-item">
@@ -140,6 +141,11 @@ const ConfigItem = ({
           onChange={(e) => onChange(e.target.value)}
           className="tp-text-input"
         />
+      )}
+      {isFontFamily && (
+        <span className="tp-field-hint">
+          Inherits from the host app by default. Pass any font-family string to override and ensure the font is loaded in your app.
+        </span>
       )}
     </div>
   )

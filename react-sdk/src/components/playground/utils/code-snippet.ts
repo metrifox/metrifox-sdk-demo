@@ -26,7 +26,7 @@ export const buildCodeSnippet = (
   plansOnly={${d?.plansOnly ?? false}}
   singlePurchasesOnly={${d?.singlePurchasesOnly ?? false}}
   showTabHeader={${d?.showTabHeader ?? true}}
-  theme={{ pricingTable: ${JSON.stringify(themeForSdk, null, 2)} }} 
+  theme={${JSON.stringify(themeForSdk, null, 2)}} 
 />`
   }
   return `import { Widget } from '@metrifox/react-sdk';
