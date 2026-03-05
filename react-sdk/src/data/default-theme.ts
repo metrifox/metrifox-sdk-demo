@@ -4,7 +4,7 @@ export const defaultCustomerPortalTheme = {
     linkColor: "#006FEE",
     backgroundColor: "#FFFFFF",
     borderRadius: "16px",
-    fontFamily: '"Cerebri Sans Pro", sans-serif',
+    fontFamily: '"Space Grotesk", sans-serif',
     containerPadding: "24px",
   },
   tabs: {
@@ -16,7 +16,7 @@ export const defaultCustomerPortalTheme = {
   },
   sections: {
     background: "#FFFFFF",
-    padding: "0px",
+    padding: "16px",
     borderColor: "transparent",
     borderRadius: "8px",
     emptyTextColor: "#9CA3AF",
@@ -123,10 +123,10 @@ export const defaultCustomerPortalTheme = {
     cellPadding: "1rem 0.75rem",
     expandIconColor: "#71717A",
     typography: {
-      fontSize: "16px",
+      fontSize: "14px",
       fontWeight: "400",
-      headerFontSize: "16px",
-      headerFontWeight: "600",
+      headerFontSize: "14px",
+      headerFontWeight: "500",
     },
   },
   modals: {
