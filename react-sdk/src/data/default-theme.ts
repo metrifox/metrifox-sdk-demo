@@ -2,27 +2,27 @@
 export const defaultCustomerPortalTheme = {
   general: {
     linkColor: "#006FEE",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#FFFFFF",
     borderRadius: "16px",
     fontFamily: '"Space Grotesk", sans-serif',
     containerPadding: "24px",
   },
   tabs: {
-    tabBackground: "#ffffff",
+    tabBackground: "#FFFFFF",
     tabBorderColor: "#E4E4E7",
     activeTabBackground: "#3D3D3D",
-    activeTabTextColor: "#ffffff",
-    inactiveTabTextColor: "#6b7280",
+    activeTabTextColor: "#FFFFFF",
+    inactiveTabTextColor: "#6B7280",
   },
   sections: {
-    background: "#ffffff",
+    background: "#FFFFFF",
     padding: "0px",
     borderColor: "transparent",
     borderRadius: "8px",
-    emptyTextColor: "#9ca3af",
+    emptyTextColor: "#9CA3AF",
     usage: {
       barColor: "#006FEE",
-      trackColor: "#e5e7eb",
+      trackColor: "#E5E7EB",
     },
     content: {
       background: "#F4F4F5",
@@ -31,7 +31,7 @@ export const defaultCustomerPortalTheme = {
       borderRadius: "8px",
     },
     summaryBalance: {
-      background: "#ffffff",
+      background: "#FFFFFF",
       padding: "24px",
       borderColor: "#E4E4E7",
       borderRadius: "8px",
@@ -78,7 +78,7 @@ export const defaultCustomerPortalTheme = {
       typography: {
         fontSize: "14px",
         fontWeight: "500",
-        color: "#ffffff",
+        color: "#FFFFFF",
       },
     },
     secondary: {
@@ -97,44 +97,44 @@ export const defaultCustomerPortalTheme = {
   },
   lineItems: {
     parentRow: {
-      background: "#ffffff",
-      borderColor: "#e5e7eb",
+      background: "#FFFFFF",
+      borderColor: "#E5E7EB",
       typography: {
         label: { color: "#111827" },
-        quantity: { color: "#6b7280" },
+        quantity: { color: "#6B7280" },
       },
     },
     childRow: {
-      background: "#ffffff",
-      borderColor: "#e5e7eb",
+      background: "#FFFFFF",
+      borderColor: "#E5E7EB",
       typography: {
         label: { color: "#111827" },
-        quantity: { color: "#6b7280" },
+        quantity: { color: "#6B7280" },
       },
     },
   },
   tables: {
-    headerBackground: "#e5e7eb",
-    headerTextColor: "#191919",
+    headerBackground: "#E4E4E7",
+    headerTextColor: "#3D3D3D",
     rowBackgroundOdd: "transparent",
     rowBackgroundEven: "transparent",
-    rowTextColor: "#111827",
-    borderColor: "#e5e7eb",
+    rowTextColor: "#3D3D3D",
+    borderColor: "#E5E7EB",
     cellPadding: "1rem 0.75rem",
-    expandIconColor: "#71717a",
+    expandIconColor: "#71717A",
     typography: {
       fontSize: "16px",
-      fontWeight: "500",
+      fontWeight: "400",
       headerFontSize: "16px",
       headerFontWeight: "600",
     },
   },
   modals: {
     overlayColor: "rgba(0, 0, 0, 0.4)",
-    background: "#ffffff",
+    background: "#FFFFFF",
     borderColor: "transparent",
     borderRadius: "24px",
-    closeButtonColor: "#9ca3af",
+    closeButtonColor: "#9CA3AF",
     header: {
       fontSize: "20px",
       fontWeight: "600",
@@ -148,17 +148,17 @@ export const defaultCustomerPortalTheme = {
     description: {
       fontSize: "14px",
       fontWeight: "400",
-      color: "#6b7280",
+      color: "#6B7280",
     },
     footer: {
       primary: {
-        backgroundColor: "#2563eb",
-        textColor: "#ffffff",
+        backgroundColor: "#2563EB",
+        textColor: "#FFFFFF",
       },
       secondary: {
         backgroundColor: "transparent",
         textColor: "#374151",
-        borderColor: "#e5e7eb",
+        borderColor: "#E5E7EB",
         borderWidth: "1px",
       },
     },
@@ -166,30 +166,30 @@ export const defaultCustomerPortalTheme = {
   plans: {
     currentPlanCard: {
       header: {
-        background: "#e5e7eb",
-        textColor: "#111827",
+        background: "#3D3D3D",
+        textColor: "#FFFFFF",
       },
-      gradientColor: "#e5e7eb",
+      gradientColor: "#DEF764",
     },
     planCards: {
-      background: "#ffffff",
+      background: "#FFFFFF",
       border: {
-        color: "#e5e7eb",
+        color: "#E5E7EB",
         width: "1px",
         radius: "1rem",
       },
       header: {
-        background: "#e5e7eb",
+        background: "#E5E7EB",
         textColor: "#111827",
       },
       description: {
-        textColor: "#6b7280",
-        textButtonColor: "#2563eb",
+        textColor: "#6B7280",
+        textButtonColor: "#2563EB",
       },
       price: {
         amountColor: "#111827",
-        primaryTextColor: "#6b7280",
-        secondaryTextColor: "#9ca3af",
+        primaryTextColor: "#6B7280",
+        secondaryTextColor: "#9CA3AF",
         background: "transparent",
         borderColor: "transparent",
       },
@@ -200,17 +200,17 @@ export const defaultCustomerPortalTheme = {
     },
     planButton: {
       background: "#3D3D3D",
-      textColor: "#ffffff",
+      textColor: "#FFFFFF",
     },
     planToggle: {
-      background: "#e5e7eb",
-      activeBackground: "#1f2937",
-      activeText: "#ffffff",
-      inactiveText: "#6b7280",
+      background: "#E4E4E7",
+      activeBackground: "#3D3D3D",
+      activeText: "#FFFFFF",
+      inactiveText: "#6B7280",
     },
     planTags: {
-      freeTrialBackground: "#dbeafe",
-      freeTrialText: "#1e40af",
+      freeTrialBackground: "#DBEAFE",
+      freeTrialText: "#1E40AF",
     },
   },
 }
