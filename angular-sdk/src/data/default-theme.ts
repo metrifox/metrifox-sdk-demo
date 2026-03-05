@@ -1,28 +1,27 @@
-// Default configuration for customer portal (matches CustomerPortalTheme in SDK).
 export const defaultCustomerPortalTheme = {
   general: {
     linkColor: "#006FEE",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#ffffff",
     borderRadius: "16px",
     fontFamily: '"Cerebri Sans Pro", sans-serif',
     containerPadding: "24px",
   },
   tabs: {
-    tabBackground: "#FFFFFF",
+    tabBackground: "#ffffff",
     tabBorderColor: "#E4E4E7",
     activeTabBackground: "#3D3D3D",
-    activeTabTextColor: "#FFFFFF",
-    inactiveTabTextColor: "#6B7280",
+    activeTabTextColor: "#ffffff",
+    inactiveTabTextColor: "#6b7280",
   },
   sections: {
-    background: "#FFFFFF",
+    background: "#ffffff",
     padding: "0px",
     borderColor: "transparent",
     borderRadius: "8px",
-    emptyTextColor: "#9CA3AF",
+    emptyTextColor: "#9ca3af",
     usage: {
       barColor: "#006FEE",
-      trackColor: "#E5E7EB",
+      trackColor: "#e5e7eb",
     },
     content: {
       background: "#F4F4F5",
@@ -31,7 +30,7 @@ export const defaultCustomerPortalTheme = {
       borderRadius: "8px",
     },
     summaryBalance: {
-      background: "#FFFFFF",
+      background: "#ffffff",
       padding: "24px",
       borderColor: "#E4E4E7",
       borderRadius: "8px",
@@ -78,7 +77,7 @@ export const defaultCustomerPortalTheme = {
       typography: {
         fontSize: "14px",
         fontWeight: "500",
-        color: "#FFFFFF",
+        color: "#ffffff",
       },
     },
     secondary: {
@@ -97,44 +96,44 @@ export const defaultCustomerPortalTheme = {
   },
   lineItems: {
     parentRow: {
-      background: "#FFFFFF",
-      borderColor: "#E5E7EB",
+      background: "#ffffff",
+      borderColor: "#e5e7eb",
       typography: {
         label: { color: "#111827" },
-        quantity: { color: "#6B7280" },
+        quantity: { color: "#6b7280" },
       },
     },
     childRow: {
-      background: "#FFFFFF",
-      borderColor: "#E5E7EB",
+      background: "#ffffff",
+      borderColor: "#e5e7eb",
       typography: {
         label: { color: "#111827" },
-        quantity: { color: "#6B7280" },
+        quantity: { color: "#6b7280" },
       },
     },
   },
   tables: {
-    headerBackground: "#E4E4E7",
-    headerTextColor: "#3D3D3D",
+    headerBackground: "#e5e7eb",
+    headerTextColor: "#191919",
     rowBackgroundOdd: "transparent",
     rowBackgroundEven: "transparent",
-    rowTextColor: "#3D3D3D",
-    borderColor: "#E5E7EB",
+    rowTextColor: "#111827",
+    borderColor: "#e5e7eb",
     cellPadding: "1rem 0.75rem",
-    expandIconColor: "#71717A",
+    expandIconColor: "#71717a",
     typography: {
       fontSize: "16px",
-      fontWeight: "400",
+      fontWeight: "500",
       headerFontSize: "16px",
       headerFontWeight: "600",
     },
   },
   modals: {
     overlayColor: "rgba(0, 0, 0, 0.4)",
-    background: "#FFFFFF",
+    background: "#ffffff",
     borderColor: "transparent",
     borderRadius: "24px",
-    closeButtonColor: "#9CA3AF",
+    closeButtonColor: "#9ca3af",
     header: {
       fontSize: "20px",
       fontWeight: "600",
@@ -148,17 +147,17 @@ export const defaultCustomerPortalTheme = {
     description: {
       fontSize: "14px",
       fontWeight: "400",
-      color: "#6B7280",
+      color: "#6b7280",
     },
     footer: {
       primary: {
-        backgroundColor: "#2563EB",
-        textColor: "#FFFFFF",
+        backgroundColor: "#2563eb",
+        textColor: "#ffffff",
       },
       secondary: {
         backgroundColor: "transparent",
         textColor: "#374151",
-        borderColor: "#E5E7EB",
+        borderColor: "#e5e7eb",
         borderWidth: "1px",
       },
     },
@@ -166,30 +165,30 @@ export const defaultCustomerPortalTheme = {
   plans: {
     currentPlanCard: {
       header: {
-        background: "#3D3D3D",
-        textColor: "#FFFFFF",
+        background: "#e5e7eb",
+        textColor: "#111827",
       },
-      gradientColor: "#DEF764",
+      gradientColor: "#e5e7eb",
     },
     planCards: {
-      background: "#FFFFFF",
+      background: "#ffffff",
       border: {
-        color: "#E5E7EB",
+        color: "#e5e7eb",
         width: "1px",
         radius: "1rem",
       },
       header: {
-        background: "#E5E7EB",
+        background: "#e5e7eb",
         textColor: "#111827",
       },
       description: {
-        textColor: "#6B7280",
-        textButtonColor: "#2563EB",
+        textColor: "#6b7280",
+        textButtonColor: "#2563eb",
       },
       price: {
         amountColor: "#111827",
-        primaryTextColor: "#6B7280",
-        secondaryTextColor: "#9CA3AF",
+        primaryTextColor: "#6b7280",
+        secondaryTextColor: "#9ca3af",
         background: "transparent",
         borderColor: "transparent",
       },
@@ -200,22 +199,21 @@ export const defaultCustomerPortalTheme = {
     },
     planButton: {
       background: "#3D3D3D",
-      textColor: "#FFFFFF",
+      textColor: "#ffffff",
     },
     planToggle: {
-      background: "#E4E4E7",
-      activeBackground: "#3D3D3D",
-      activeText: "#FFFFFF",
-      inactiveText: "#6B7280",
+      background: "#e5e7eb",
+      activeBackground: "#1f2937",
+      activeText: "#ffffff",
+      inactiveText: "#6b7280",
     },
     planTags: {
-      freeTrialBackground: "#DBEAFE",
-      freeTrialText: "#1E40AF",
+      freeTrialBackground: "#dbeafe",
+      freeTrialText: "#1e40af",
     },
   },
-}
+};
 
-// Default theme for Pricing table (plans nested like customer portal theme.plans).
 export const defaultPricingTableTheme: Record<string, unknown> = {
   plans: {
     currentPlanCard: {
@@ -280,4 +278,4 @@ export const defaultPricingTableTheme: Record<string, unknown> = {
     singlePurchasesOnly: false,
     showTabHeader: true,
   },
-}
+};
