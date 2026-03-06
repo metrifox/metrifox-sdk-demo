@@ -49,9 +49,19 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
               }
             ],
-            "styles": ["src/styles.css"],
+            "styles": [
+              "src/styles.css",
+              "src/components/playground/styles/playground.css",
+              "src/components/playground/styles/preview.css",
+              "src/components/playground/styles/theme-panel.css"
+            ],
             "scripts": [],
             "preserveSymlinks": true
           },
@@ -65,8 +75,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "16kB",
+                  "maximumError": "32kB"
                 }
               ],
               "outputHashing": "all"
