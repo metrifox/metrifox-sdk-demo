@@ -30,8 +30,8 @@ importers:
         specifier: ^19.2.0
         version: 19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.18(rxjs@7.8.2)(zone.js@0.15.1))(@angular/platform-browser@19.2.18(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.18(rxjs@7.8.2)(zone.js@0.15.1)))(rxjs@7.8.2)
       '@metrifox/angular-sdk':
-        specifier: 0.0.2-beta.1
-        version: 0.0.2-beta.1(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.18(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
+        specifier: ^2.0.0
+        version: 2.0.0(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.18(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
       rxjs:
         specifier: ~7.8.0
         version: 7.8.2
@@ -1239,8 +1239,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@metrifox/angular-sdk@0.0.2-beta.1':
-    resolution: {integrity: sha512-UhKWcEZETfls5SFs3Zf/t2H5NjQ37W6aRuDKcvD7TOab246GTxHjUq2RYgwTVvP4rdCCEZYvx4t5amlU4LT0/Q==}
+  '@metrifox/angular-sdk@2.0.0':
+    resolution: {integrity: sha512-WE6VqGzr7/chReYJCQsd561Uv92B0ddrLOjaBrvCBJUAUpgJTn8Eggd/r2dhqy47cogEdaUz4dIdC+a7oI/pAw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@angular/common': '>=17.0.0'
@@ -5526,7 +5526,7 @@ snapshots:
   '@lmdb/lmdb-win32-x64@3.2.6':
     optional: true
 
-  '@metrifox/angular-sdk@0.0.2-beta.1(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.18(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)':
+  '@metrifox/angular-sdk@2.0.0(@angular/common@19.2.18(@angular/core@19.2.18(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.18(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)':
     dependencies:
       '@angular/common': 19.2.18(@angular/core@19.2.18(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2)
       '@angular/core': 19.2.18(rxjs@7.8.2)(zone.js@0.15.1)
