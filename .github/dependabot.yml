@@ -1,0 +1,99 @@
+version: 2
+
+updates:
+  # Root level
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "cron"
+      cron: "0 4 * * 2"     
+    open-pull-requests-limit: 8
+    groups:
+      # Group React-related updates
+      react-ecosystem:
+        patterns:
+          - "react*"
+          - "@types/react*"
+
+      # Angular ecosystem
+      angular-ecosystem:
+        patterns:
+          - "@angular*"
+          - "rxjs"
+          - "zone.js"
+          - "@types/*"   
+
+      # Testing tools 
+      testing-tools:
+        patterns:
+          - "jest*"
+          - "@testing-library*"
+
+      # For internal Metrifox packages
+      metrifox-internal:
+        patterns:
+          - "@metrifox/*"
+
+  # React SDK subfolder
+  - package-ecosystem: "npm"
+    directory: "/react-sdk"
+    schedule:
+      interval: "cron"
+      cron: "0 4 * * 2"
+    open-pull-requests-limit: 5
+    groups:
+      react-ecosystem:
+        patterns:
+          - "react*"
+          - "@types/react*"
+      testing-tools:
+        patterns:
+          - "jest*"
+          - "@testing-library*"
+      metrifox-internal:
+        patterns:
+          - "@metrifox/*"
+
+  # Angular SDK subfolder
+  - package-ecosystem: "npm"
+    directory: "/angular-sdk"
+    schedule:
+      interval: "cron"
+      cron: "0 4 * * 2"
+    open-pull-requests-limit: 5
+    groups:
+      angular-ecosystem:
+        patterns:
+          - "@angular*"
+          - "rxjs"
+          - "zone.js"
+      testing-tools:
+        patterns:
+          - "jest*"
+          - "@testing-library*"
+      metrifox-internal:
+        patterns:
+          - "@metrifox/*"
+
+  # Landing page 
+  - package-ecosystem: "npm"
+    directory: "/landing"
+    schedule:
+      interval: "cron"
+      cron: "0 4 * * 2"
+    open-pull-requests-limit: 5
+    groups:
+      metrifox-internal:
+        patterns:
+          - "@metrifox/*"
+
+  # GitHub Actions 
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "cron"
+      cron: "0 4 * * 2"
+    groups:
+      actions:
+        patterns:
+          - "*"
