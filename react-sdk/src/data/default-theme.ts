@@ -14,6 +14,16 @@ export const defaultCustomerPortalTheme = {
     activeTabTextColor: "#FFFFFF",
     inactiveTabTextColor: "#6B7280",
   },
+  select: {
+    background: "#ffffff",
+    borderColor: "#d1d5db",
+    textColor: "#262626",
+    caretColor: "#6b7280",
+    dropdownBackground: "#ffffff",
+    dropdownBorderColor: "#d1d5db",
+    optionTextColor: "#4b5563",
+    optionHoverBackground: "#f3f4f6",
+  },
   sections: {
     background: "#FFFFFF",
     padding: "16px",
@@ -113,6 +123,25 @@ export const defaultCustomerPortalTheme = {
       },
     },
   },
+  popover: {
+    trigger: {
+      iconColor: "#52525B",
+    },
+    menu: {
+      background: "#FFFFFF",
+      borderColor: "#E4E4E7",
+      borderRadius: "8px",
+      itemPadding: "0.25rem 1rem",
+      itemHoverBackground: "#F4F4F5",
+      itemDividerColor: "#E4E4E7",
+      typography: {
+        fontSize: "14px",
+        fontWeight: "500",
+        color: "#52525B",
+        dangerColor: "#ef4444",
+      },
+    },
+  },
   tables: {
     headerBackground: "#E4E4E7",
     headerTextColor: "#3D3D3D",
@@ -154,13 +183,24 @@ export const defaultCustomerPortalTheme = {
       primary: {
         backgroundColor: "#2563EB",
         textColor: "#FFFFFF",
+        borderRadius: "8px",
       },
       secondary: {
         backgroundColor: "transparent",
         textColor: "#374151",
         borderColor: "#E5E7EB",
         borderWidth: "1px",
+        borderRadius: "8px",
       },
+    },
+  },
+  banners: {
+    info: {
+      background: "#FFF6E5",
+      textColor: "#664200",
+      borderRadius: "8px",
+      buttonBorderColor: "#664200",
+      buttonTextColor: "#664200",
     },
   },
   plans: {
@@ -257,6 +297,7 @@ export const defaultPricingTableTheme: Record<string, unknown> = {
       textColor: "#ffffff",
       secondaryBackground: "#f3f4f6",
       secondaryTextColor: "#374151",
+      textButtonColor: "#2563eb",
     },
     planToggle: {
       background: "#e5e7eb",
@@ -274,6 +315,59 @@ export const defaultPricingTableTheme: Record<string, unknown> = {
     inactiveText: "#6b7280",
     indicator: "#FFFFFF",
     borderColor: "#3D3D3D",
+  },
+  select: {
+    background: "#ffffff",
+    borderColor: "#d1d5db",
+    textColor: "#262626",
+    caretColor: "#6b7280",
+    dropdownBackground: "#ffffff",
+    dropdownBorderColor: "#d1d5db",
+    optionTextColor: "#4b5563",
+    optionHoverBackground: "#f3f4f6",
+  },
+  checkoutBar: {
+    background: "#f9fafb",
+    borderColor: "#e5e7eb",
+    textColor: "#3F3F46",
+    buttonBackground: "#2563eb",
+    buttonTextColor: "#ffffff",
+  },
+  modals: {
+    overlayColor: "rgba(0, 0, 0, 0.4)",
+    background: "#ffffff",
+    borderColor: "transparent",
+    borderRadius: "24px",
+    closeButtonColor: "#9ca3af",
+    header: {
+      fontSize: "20px",
+      fontWeight: "600",
+      color: "#111827",
+    },
+    title: {
+      fontSize: "20px",
+      fontWeight: "600",
+      color: "#111827",
+    },
+    description: {
+      fontSize: "14px",
+      fontWeight: "400",
+      color: "#71717A",
+    },
+    footer: {
+      primary: {
+        backgroundColor: "#3D3D3D",
+        textColor: "#ffffff",
+        borderRadius: "8px",
+      },
+      secondary: {
+        backgroundColor: "transparent",
+        textColor: "#374151",
+        borderColor: "#E4E4E7",
+        borderWidth: "1px",
+        borderRadius: "8px",
+      },
+    },
   },
   display: {
     plansOnly: false,

@@ -16,11 +16,14 @@ export const widgetCatalog: WidgetDefinition[] = [
     sectionDescriptions: {
       general: "Global styles: links, background, border radius, font, and container padding.",
       tabs: "Tab bar appearance and active/inactive tab colors.",
+      select: "Select/dropdown field and option list styling.",
       sections: "Section containers, usage bars, content blocks, and typography.",
       buttons: "Primary and secondary button styles.",
       lineItems: "Line item rows (parent and child) and their text colors.",
+      popover: "Action menu trigger and dropdown (e.g. subscription line-item actions).",
       tables: "Data table header, rows, borders, and cell styling.",
       modals: "Modal overlay, panel, close button, and footer buttons.",
+      banners: "Info banner styling for scheduled changes and cancellation notices.",
       plans: "Plan cards, current plan highlight, features, toggle, and tags (e.g. free trial).",
     },
     icon: (
@@ -477,12 +480,12 @@ export const widgetCatalog: WidgetDefinition[] = [
     defaultTheme: defaultPricingTableTheme,
     themeScope: "pricingTable",
     sectionDescriptions: {
-      display: "Control which content and tabs are shown (plans only, one-time purchases, tab header).",
-      card: "Card container, header, description, and price block colors.",
-      button: "Primary and secondary CTA button colors.",
-      featureList: "Feature list text and icon colors.",
+      plans: "Plan cards, features, toggle, and tags.",
       tabs: "Plan vs one-time tab styling.",
-      intervalToggle: "Billing interval toggle (e.g. monthly/yearly) colors.",
+      select: "Select/dropdown field and option list styling.",
+      checkoutBar: "Sticky checkout summary bar at the bottom.",
+      modals: "Modal overlay, panel, close button, and footer buttons.",
+      display: "Control which content and tabs are shown (plans only, one-time purchases, tab header).",
     },
     icon: (
       <svg
