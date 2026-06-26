@@ -1,0 +1,81 @@
+{
+  "name": "@metrifox/react-sdk",
+  "version": "2.0.12",
+  "type": "module",
+  "description": "React SDK for Metrifox",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./dist/styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "LICENSE"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "pnpm clean && rollup -c",
+    "dev": "vite",
+    "dev:build": "rollup -c -w",
+    "dev:link": "npx yalc publish --push",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "lint": "eslint . --ignore-pattern dist",
+    "lint:fix": "eslint . --fix --ignore-pattern dist",
+    "lint:staged": "lint-staged",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui"
+  },
+  "keywords": [
+    "react",
+    "sdk",
+    "metrifox"
+  ],
+  "author": "Metrifox",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.9",
+    "@hookform/resolvers": "^5.2.2",
+    "@tailwindcss/postcss": "^4.3.0",
+    "axios": "^1.16.0",
+    "currency-symbol-map": "^5.1.0",
+    "dayjs": "^1.11.18",
+    "deepmerge": "^4.3.1",
+    "react-hook-form": "^7.69.0",
+    "react-to-print": "^3.2.0",
+    "sonner": "^2.0.7",
+    "tailwindcss": "^4.3.0",
+    "use-clamp-text": "^1.1.1",
+    "zod": "^4.2.1",
+    "zustand": "^5.0.8"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css}": [
+      "prettier --write"
+    ]
+  },
+  "pnpm": {
+    "overrides": {
+      "esbuild@<=0.24.2": ">=0.25.0"
+    }
+  },
+  "yalcSig": "95637d064ffb216d35cff263a13924e7"
+}

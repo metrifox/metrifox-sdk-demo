@@ -24,6 +24,7 @@ export const CustomerPortalWidget = ({
       metrifoxInit({
         clientKey,
         theme: Object.keys(themeObj).length > 0 ? themeObj : undefined,
+        baseUrl: "http://localhost:8000/api/v1",
       })
     }
   }, [clientKey, rest])
