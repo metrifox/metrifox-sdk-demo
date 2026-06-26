@@ -1,9 +1,0 @@
-{
-  "version": "v1",
-  "packages": {
-    "@metrifox/react-sdk": {
-      "signature": "95637d064ffb216d35cff263a13924e7",
-      "file": true
-    }
-  }
-}
