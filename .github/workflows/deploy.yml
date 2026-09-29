@@ -30,6 +30,9 @@ jobs:
         with:
           node-version: 20
 
+      - name: Use npm 11 for lockfile compatibility
+        run: npm install -g npm@11
+
       - name: Install React dependencies
         working-directory: ./react-sdk
         run: npm ci
