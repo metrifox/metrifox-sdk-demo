@@ -115,6 +115,11 @@
   position: relative;
 }
 
+/* Customer portal uses min-h-screen (100vh); confine it to the mock browser frame */
+.pg-window-content .mfx [data-testid="portal-container"] {
+  min-height: 100%;
+}
+
 .pg-theme-light .pg-preview-container {
   background-color: #cbd5e1;
   background-image: radial-gradient(#94a3b8 1px, transparent 1px);
